@@ -1,0 +1,33 @@
+﻿ORG 000
+
+Loop, 		LoadI 		Addr
+			Output
+            
+            Load 		Addr
+            Add			One
+            Store		Addr
+            
+            Load		Count
+            Subt		One
+            Store		Count
+            
+            SkipCond	400
+            Jump 		Loop
+            Halt
+
+Addr,	    HEX			00E
+Count,	    DEC			12
+One,	    DEC			1
+
+A0,			HEX			068 		/ h
+			HEX			065 		/ e
+			HEX			06C 		/ l
+			HEX			06C			/ l
+			HEX 		06F 		/ o
+			HEX 		020 		/ space
+			HEX 		077 		/ w
+			HEX 		06F 		/ o
+			HEX 		072 		/ r
+			HEX 		06C 		/ l
+			HEX 		064 		/ d
+			HEX 		021 		/ !

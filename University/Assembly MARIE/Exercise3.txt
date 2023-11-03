@@ -1,0 +1,59 @@
+﻿/ Program made by George Mavroeidis and Johanson Felix
+/ Use marie.js.org, make sure ‘Output Mode’ is set to ‘DEC’.
+/ For loop that sums index and variable until a condition has been met
+/ Respective columns (left to right):
+/ Label | Opcode or Directive | Operand or value |
+
+/ Store our program starting from memory location x000. Not necessary to include this. Default is 000.
+ORG 000
+
+/ Load variable X and add index from every iteration
+Loop,		Load 		X
+			Add			Summer
+            Store 		X
+            
+            / Load the summer and increment it by one for every iteration
+            / This simulates the for loop incrementation
+            Load		Summer
+            Add			One
+            Store 		Summer
+            
+            / Substract counter by 1, which is the actual loop incrementation
+            Load		Count
+            Subt		One
+            Store		Count
+            
+            / This is the if statement, where it checks whether X is bigger than 120
+            / To check this, we substract 120 from X to check whether it is positive or negative
+			Load		X
+            Subt		Cond
+            
+            / If the substraction is negative, it means X is smaller
+            / So if X is not smaller than 120, the step jumps to the 'End" label
+            SkipCond	000
+            Jump		End
+			
+            / If the 'Count' reaches 0, it means loop is finished iterating
+            / If not, the step iterates the loop once again
+            / Note: The loop will never finish but it will break until the above condition is met
+            Skipcond	400
+            Jump		Loop
+ 
+            / This was a testing case to check if the program runs correctly
+            / By setting the End label here, we check the last result calculated for X,
+            / which is 115. By simulating this in C language, X results indeed at 115
+	        / Load		X
+            / Output
+End,		Halt
+            
+/ X variable initialized to 10
+X,			DEC			10
+/ Counter initialized to 100, which is the end of the loop at C language
+Count,		DEC			100
+/ Variable that is added at X and incremented at every loop
+Summer,		DEC			0
+/ Incrementation by 1
+One,		DEC			1
+/ Variable that is used to check whether X is bigger or smaller than 102 in its current state
+Cond,		DEC 		102
+            	

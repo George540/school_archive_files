@@ -1,0 +1,89 @@
+ORG 		000    //Store program using memory location x000
+
+	
+//Initial value of X is loaded as 20
+		Load 		X  
+//New value for X is loaded into accumulator and stored in X     
+       		Load newX
+        	Store X
+  
+//Count for subsequent loop takes value of X      
+        	Store 		count
+// Subtract five from X, result will be in AC, this will be used to check if X<5    
+		Subt 		five  
+
+//Check to see if AC is negative (implies X<5). If so, skip line Jump Else, and continue from If block     
+	Skipcond 	000 
+
+//If AC is not negative (X>=5), then execute Jump Else to skip If block   
+		Jump 		Else 	
+
+//if AC is negative (implies X<5)  then load X back into AC, Subtract two from AC, Store value in AC as Y, Load twentty to AC and Store as X, Jump to end block 
+If,		Load 		X
+		     
+		Subt 		two    
+    		Store 		Y
+		Load 		twenty
+		Store 		X			
+   		Jump 		End	    
+
+
+//If  AC is not negative (X>=5), then Jump to Loop1
+Else, 		Jump 		Loop1     
+
+//Simulation of cubing a number by an addition Loop( Loop1 with Count2, Loop2):
+
+//Load X into accumulator, Add value of sum1 (initially 0), Store value of AC in sum1, load count to AC (count initially set to value of X), subtract one from AC, Store AC to count, if AC>0 then skip next line and jump to Loop1 block again, else Jump to Count2 block
+Loop1, 		Load 		X    	
+		Add 		sum1		
+        	Store 		sum1         
+        	load 		count	
+        	Subt 		one 	
+       		Store 		count	
+        	Skipcond 	800  
+        	Jump 		Count2   
+        	Jump 		Loop1 	
+        
+//load X into AC, store value of AC (X) in count and follow code to Loop2
+Count2, 	Load 		X   
+		Store 		count 
+
+//Load sum1 into AC, Add value of sum to AC, Store AC to sum, Load count to AC, subtract one from AC and store AC to count, if  if AC>0 then skip next line and jump to Loop2 block again, else Jump to End block
+Loop2, 		Load 		sum1 
+		Add 		sum   
+       		Store 		sum         
+        	Load 		count  
+        	Subt 		one  
+        	Store 		count         
+        	SkipCond 	800 
+        	Jump 		Negate  
+        	Jump 		Loop2 
+		
+//Simulation of negating a number by subtracting the number from itself which results in 0 then subtracting the number from 0 which results in the number negated
+Negate,		Load 		sum  
+        	Subt 		sum 
+        	Subt 		sum 
+        	Store 		Y       
+        	Load 		eight	
+        	Store 		X          
+        	Jump 		End 
+            
+//Load X and Y to AC, output X and Y, halt program
+End,		Load 		X  
+    		Output 
+   		Load 		Y 
+    		Output     
+		Halt    
+    
+//Identifier Declarations:
+X, 		DEC 		20	/'initial value of X as 20'
+newX, 		DEC		15	/'value of X in each case(a,b,c) 15, -25, 14'
+Y, 		DEC 		0	/'value of Y in each case(a,b,c) 0, 12, -14'
+one, 		DEC 		1 	/'value of 1'
+two,		DEC 		2 	/'value of 2'
+five, 		DEC 		5 	/'value of 5'
+eight, 		DEC 		8	/'value of 8'
+twenty, 	DEC 		20 	/'value of 20'
+count,		DEC 		0 	/'count for loops'
+sum1, 		DEC 		0	/'sum of Loop1'
+sum, 		DEC 		0 	/'Overall sum after looping'

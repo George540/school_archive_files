@@ -1,0 +1,116 @@
+     Assembly listing for: Step2.mas
+                Assembled: Sat Mar 30 18:47:09 EDT 2019
+
+         |                          / Store our program starting from memory location x000. Not necessary to include this. Default is 000.  
+         |         ORG 000           
+         |                          /User Inputs length of passphrase. Passphrase length is stored and also stored as a counter for a subsequent loop
+000 5000 |         INPUT             
+001 2030 |         STORE length      
+002 1030 |         LOAD length       
+003 2034 |         STORE Count2      
+         |                          /Loop to print string "Enter a Passphrase:"
+004 D037 |  Loop   LOADI Addr        
+005 6000 |         OUTPUT            
+006 1037 |         LOAD Addr         
+007 3039 |         ADD One           
+008 2037 |         STORE Addr        
+009 1038 |         LOAD Count        
+00A 4039 |         SUBT One          
+00B 2038 |         STORE Count       
+00C 8400 |         SKIPCOND 400      
+00D 9004 |         JUMP Loop         
+         |                          /Loop to accept input of passphrase of size length
+00E 5000 |  Loop2  INPUT             
+00F E033 |         STOREI Addr2      
+010 1033 |         LOAD Addr2        
+011 3035 |         ADD newOne        
+012 2033 |         STORE Addr2       
+013 1034 |         LOAD Count2       
+014 4035 |         SUBT newOne       
+015 2034 |         STORE Count2      
+016 8400 |         SKIPCOND 400      
+017 900E |         JUMP Loop2        
+018 1033 |         LOAD Addr2        
+019 4030 |         SUBT length       
+01A 2033 |         STORE Addr2       
+01B 1030 |         LOAD length       
+01C 2034 |         STORE Count2      
+01D D033 |  Loop3  LOADI Addr2       
+01E 6000 |         OUTPUT            
+01F 1033 |         LOAD Addr2        
+020 3035 |         ADD newOne        
+021 2033 |         STORE Addr2       
+022 1034 |         LOAD Count2       
+023 4035 |         SUBT newOne       
+024 2034 |         STORE Count2      
+025 8400 |         SKIPCOND 400      
+026 901D |         JUMP Loop3        
+         |                          /If passphrase length is not equal to eight then jump to Exit1, else jump to Else
+027 1030 |  If     LOAD length       
+028 4032 |         SUBT eight        
+029 8400 |         SKIPCOND 400      
+02A 902E |         JUMP Exit1        
+02B 902C |         JUMP Else         
+         |                          /If passphrase is equal to 8 then Load zero into the AC then halt
+02C 1031 |  Else   LOAD zero         
+02D 7000 |         HALT              
+         |                          /If passphrase is not equal to 8 then Load one into the AC then halt
+02E 1035 |  Exit1  LOAD newOne       
+02F 7000 |         HALT              
+030 0000 |  length DEC 000          /length of passphrase
+031 0000 |  zero   DEC 000          /'value of zero'
+032 0008 |  eight  DEC 008          /value of 'eight'
+033 0036 |  Addr2  HEX 036          /Holds the address of A2
+034 0000 |  Count2 DEC 000          /counter that allows the loop to run for the length of the passphrase
+035 0001 |  newOne DEC 001          /value of 'one'
+036 0000 |  A2     HEX 000          /Characters of the passphrase input are stored starting from this location
+037 003A |  Addr   HEX 03A          /Holds the address of A
+038 0013 |  Count  DEC 19           /Counter for the loop for printing the string "Enter a Passphrase:password"
+039 0001 |  One    DEC 001          /value of 'one'
+03A 0045 |  A      HEX 045          / E
+03B 006E |         HEX 06E          / n
+03C 0074 |         HEX 074          / t
+03D 0065 |         HEX 065          / e
+03E 0072 |         HEX 072          / r
+03F 0020 |         HEX 020          / space
+040 0061 |         HEX 061          / a
+041 0020 |         HEX 020          / space
+042 0050 |         HEX 0050         / P
+043 0061 |         HEX 061          / a
+044 0073 |         HEX 073          / s
+045 0073 |         HEX 073          / s
+046 0070 |         HEX 070          /p
+047 0068 |         HEX 068          /h
+048 0072 |         HEX 072          /r
+049 0061 |         HEX 061          /a
+04A 0073 |         HEX 073          /s
+04B 0065 |         HEX 065          /e
+04C 003A |         HEX 03A          /:
+
+Assembly successful.
+
+         SYMBOL TABLE
+         --------------------------------------------------
+          Symbol | Defined | References 
+         --------+---------+-------------------------------
+          A      |   03A   | 
+          A2     |   036   | 
+          Addr   |   037   | 004, 006, 008
+          Addr2  |   033   | 00F, 010, 012, 018, 01A, 01D, 
+                 |         | 01F, 021
+          Count  |   038   | 009, 00B
+          Count2 |   034   | 003, 013, 015, 01C, 022, 024
+          Else   |   02C   | 02B
+          Exit1  |   02E   | 02A
+          If     |   027   | 
+          Loop   |   004   | 00D
+          Loop2  |   00E   | 017
+          Loop3  |   01D   | 026
+          One    |   039   | 007, 00A
+          eight  |   032   | 028
+          length |   030   | 001, 002, 019, 01B, 027
+          newOne |   035   | 011, 014, 020, 023, 02E
+          zero   |   031   | 02C
+         --------------------------------------------------
+
+

@@ -1,0 +1,20 @@
+﻿/ From marie.js.org documentation
+/ Call subroutine PrintVariableX
+						JnS PrintVariableX
+                        Load X
+                        Add Y
+                        Store X
+                        JnS PrintVariableX / Call subroutine PrintVariableX again
+                        Halt
+                        
+PrintVariableX, 		HEX 000 / Used for storing return address
+						Load X
+						Output
+                        
+/ Exit subroutine PrintVariableX
+						JumpI PrintVariableX
+X, 						DEC 42
+Y, 						DEC 5
+
+  
+            	

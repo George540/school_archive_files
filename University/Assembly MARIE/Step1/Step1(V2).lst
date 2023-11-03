@@ -1,0 +1,121 @@
+     Assembly listing for: Step1(V2).mas
+                Assembled: Fri Mar 29 22:01:36 EDT 2019
+
+         |         ORG 000          //Store program using memory location x000
+         |                          
+         |                          	
+         |                          //Initial value of X is loaded as 20
+000 102E |         LOAD X            
+         |                          //New value for X is loaded into accumulator and stored in X     
+001 102F |         LOAD newX         
+002 202E |         STORE X           
+         |                            
+         |                          //Count for subsequent loop takes value of X      
+003 2036 |         STORE count       
+         |                          // Subtract five from X, result will be in AC, this will be used to check if X<5    
+004 4033 |         SUBT five         
+         |                          
+         |                          //Check to see if AC is negative (implies X<5). If so, skip line Jump Else, and continue from If block     
+005 8000 |         SKIPCOND 000      
+         |                          
+         |                          //If AC is not negative (X>=5), then execute Jump Else to skip If block   
+006 900D |         JUMP Else         
+         |                          
+         |                          //if AC is negative (implies X<5)  then load X back into AC, Subtract two from AC, Store value in AC as Y, Load twentty to AC and Store as X, Jump to end block 
+007 102E |  If     LOAD X            
+         |                          		     
+008 4032 |         SUBT two          
+009 2030 |         STORE Y           
+00A 1035 |         LOAD twenty       
+00B 202E |         STORE X           
+00C 9029 |         JUMP End          
+         |                          
+         |                          
+         |                          //If  AC is not negative (X>=5), then Jump to Loop1
+00D 900E |  Else   JUMP Loop1        
+         |                          
+         |                          //Simulation of cubing a number by an addition Loop( Loop1 with Count2, Loop2):
+         |                          
+         |                          //Load X into accumulator, Add value of sum1 (initially 0), Store value of AC in sum1, load count to AC (count initially set to value of X), subtract one from AC, Store AC to count, if AC>0 then skip next line and jump to Loop1 block again, else Jump to Count2 block
+00E 102E |  Loop1  LOAD X            
+00F 3037 |         ADD sum1          
+010 2037 |         STORE sum1        
+011 1036 |         LOAD count        
+012 4031 |         SUBT one          
+013 2036 |         STORE count       
+014 8800 |         SKIPCOND 800      
+015 9017 |         JUMP Count2       
+016 900E |         JUMP Loop1        
+         |                                  
+         |                          //load X into AC, store value of AC (X) in count and follow code to Loop2
+017 102E |  Count2 LOAD X            
+018 2036 |         STORE count       
+         |                          
+         |                          //Load sum1 into AC, Add value of sum to AC, Store AC to sum, Load count to AC, subtract one from AC and store AC to count, if  if AC>0 then skip next line and jump to Loop2 block again, else Jump to End block
+019 1037 |  Loop2  LOAD sum1         
+01A 3038 |         ADD sum           
+01B 2038 |         STORE sum         
+01C 1036 |         LOAD count        
+01D 4031 |         SUBT one          
+01E 2036 |         STORE count       
+01F 8800 |         SKIPCOND 800      
+020 9022 |         JUMP Negate       
+021 9019 |         JUMP Loop2        
+         |                          		
+         |                          //Simulation of negating a number by subtracting the number from itself which results in 0 then subtracting the number from 0 which results in the number negated
+022 1038 |  Negate LOAD sum          
+023 4038 |         SUBT sum          
+024 4038 |         SUBT sum          
+025 2030 |         STORE Y           
+026 1034 |         LOAD eight        
+027 202E |         STORE X           
+028 9029 |         JUMP End          
+         |                                      
+         |                          //Load X and Y to AC, output X and Y, halt program
+029 102E |  End    LOAD X            
+02A 6000 |         OUTPUT            
+02B 1030 |         LOAD Y            
+02C 6000 |         OUTPUT            
+02D 7000 |         HALT              
+         |                              
+         |                          //Identifier Declarations:
+02E 0014 |  X      DEC 20           /'initial value of X as 20'
+02F 000F |  newX   DEC 15           /'value of X in each case(a,b,c) 15, -25, 14'
+030 0000 |  Y      DEC 0            /'value of Y in each case(a,b,c) 0, 12, -14'
+031 0001 |  one    DEC 1            /'value of 1'
+032 0002 |  two    DEC 2            /'value of 2'
+033 0005 |  five   DEC 5            /'value of 5'
+034 0008 |  eight  DEC 8            /'value of 8'
+035 0014 |  twenty DEC 20           /'value of 20'
+036 0000 |  count  DEC 0            /'count for loops'
+037 0000 |  sum1   DEC 0            /'sum of Loop1'
+038 0000 |  sum    DEC 0            /'Overall sum after looping'
+
+Assembly successful.
+
+         SYMBOL TABLE
+         --------------------------------------------------
+          Symbol | Defined | References 
+         --------+---------+-------------------------------
+          Count2 |   017   | 015
+          Else   |   00D   | 006
+          End    |   029   | 00C, 028
+          If     |   007   | 
+          Loop1  |   00E   | 00D, 016
+          Loop2  |   019   | 021
+          Negate |   022   | 020
+          X      |   02E   | 000, 002, 007, 00B, 00E, 017, 
+                 |         | 027, 029
+          Y      |   030   | 009, 025, 02B
+          count  |   036   | 003, 011, 013, 018, 01C, 01E
+          eight  |   034   | 026
+          five   |   033   | 004
+          newX   |   02F   | 001
+          one    |   031   | 012, 01D
+          sum    |   038   | 01A, 01B, 022, 023, 024
+          sum1   |   037   | 00F, 010, 019
+          twenty |   035   | 00A
+          two    |   032   | 008
+         --------------------------------------------------
+
+

@@ -1,0 +1,85 @@
+/ Store our program starting from memory location x000. Not necessary to include this. Default is 000.  
+        ORG		000  
+/User Inputs length of passphrase. Passphrase length is stored and also stored as a counter for a subsequent loop
+   		Input
+		Store length       
+        Load length
+        Store Count2 
+/Loop to print string "Enter a Passphrase:"
+Loop,	LoadI       Addr
+		Output
+		Load		Addr
+		Add		    One
+		Store		Addr
+		Load		Count
+		Subt		One 
+		Store		Count
+		SkipCond	400
+		Jump		Loop
+/Loop to accept input of passphrase of size length
+Loop2, Input
+		StoreI 	Addr2
+		Load		Addr2
+		Add			newOne
+		Store		Addr2
+		Load		Count2
+		Subt		newOne
+		Store		Count2
+		SkipCond	400        
+		Jump		Loop2
+		Load		Addr2
+		Subt		length
+        Store 		Addr2
+		Load		length
+		Store		Count2
+Loop3, 	LoadI		Addr2     
+		Output
+		Load		Addr2
+		Add			newOne
+		Store		Addr2
+		Load		Count2
+		Subt		newOne
+		Store		Count2
+		SkipCond	400
+		Jump		Loop3   
+/If passphrase length is not equal to eight then jump to Exit1, else jump to Else
+If,     Load length       
+        Subt eight 
+        Skipcond 400        
+        Jump Exit1
+        Jump Else
+/If passphrase is equal to 8 then Load zero into the AC then halt
+Else, 	Load zero
+		Halt  
+/If passphrase is not equal to 8 then Load one into the AC then halt
+Exit1, 	Load newOne
+        Halt        
+length, 		DEC 		000		/length of passphrase
+zero,		 	DEC 		000		/'value of zero'
+eight, 		 	DEC 		008 	/value of 'eight'
+Addr2,	      	HEX			036 	/Holds the address of A2
+Count2,	      	DEC			000		/counter that allows the loop to run for the length of the passphrase
+newOne, 		DEC 		001		/value of 'one'
+A2,				HEX			000   	/Characters of the passphrase input are stored starting from this location
+Addr,	        HEX			03A		/Holds the address of A
+Count,	        DEC			19		/Counter for the loop for printing the string "Enter a Passphrase:password"
+One,	        DEC			001		/value of 'one'
+A,				HEX			045 		/ E
+				HEX			06E 		/ n
+				HEX			074 		/ t
+				HEX			065			/ e
+				HEX 		072 		/ r
+				HEX 		020 		/ space
+				HEX 		061 		/ a
+				HEX 		020 		/ space
+				HEX 		0050 		/ P
+				HEX 		061 		/ a
+				HEX 		073 		/ s
+				HEX 		073 		/ s
+       		    HEX			070			/p
+        		HEX			068			/h
+        		HEX			072			/r
+        		HEX			061			/a
+        		HEX			073			/s
+       		    HEX			065			/e
+        		HEX			03A			/:

@@ -1,0 +1,10 @@
+﻿ORG 000
+	LOAD 	X
+	Add 	Y
+    Store 	Z
+    Output
+    Halt
+
+X, 	DEC 	2
+Y,	DEC 	3
+Z, 	DEC 	0

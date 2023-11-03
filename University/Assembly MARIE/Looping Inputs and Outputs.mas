@@ -1,0 +1,51 @@
+﻿ORG 000
+
+Loop1,		Input
+			StoreI		Addr
+            
+            Load		Addr
+            Add			One
+            Store		Addr
+            
+            Load		Count
+            Subt		One
+            Store		Count
+            
+            SkipCond	400
+            Jump		Loop1
+            
+            Load		Addr
+            
+            Subt		Six
+            Store		Addr
+            Load		Six
+            Store		Count
+            
+Loop2, 		LoadI		Addr     
+            Output
+            Load		Addr
+            Add			One
+            Store		Addr
+            Load		Count
+            Subt		One
+            Store		Count
+            
+            SkipCond	400
+			Jump		Loop2
+			Halt
+
+Addr,	      HEX		01E
+Count,	      DEC		6
+One,	      DEC		1
+Six,	      DEC		6            
+A0,			  HEX		000 / Location here is x01E
+/ Location here is x01F
+/ Location here is x020
+/ Location here is x021
+/ Location here is x022
+/ Location here is x023
+/ For each location x01E to x023, we are storing the user’s input on each iteration.
+
+
+            
+            	

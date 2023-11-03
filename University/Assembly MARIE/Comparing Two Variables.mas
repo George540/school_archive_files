@@ -1,0 +1,47 @@
+﻿ORG 000
+
+        Input
+        Store 		X
+        Input
+        Store		Y
+
+        Load 		X
+        Subt		Y
+
+        Skipcond 	800
+        Jump 		Else
+
+If, 	Load 		uX
+        Output
+        Load 		space
+        Output
+        Load 		>
+        Output
+        Load 		space
+        Output
+        Load		uY
+        Output
+        Jump 		End
+    
+Else,	Load 		uX
+		Output
+        Load 		space
+        Output
+        Load 		<
+        Output
+        Load 		=
+        Output
+        Load 		space
+        Output
+        Load 		uY
+        Output
+End, 	Halt
+
+X,		DEC			0
+Y,		DEC			0
+=,		HEX			03D
+<,		HEX			03C
+>,		HEX			03E
+uX,		HEX			078
+uY,		HEX			079
+space,	HEX			020
