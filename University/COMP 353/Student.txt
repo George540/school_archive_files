@@ -1,0 +1,124 @@
+#studentID
+6384
+8878
+5818
+2693
+9560
+9666
+1230
+4268
+9745
+9414
+7632
+6916
+1481
+2098
+2685
+1228
+5760
+5492
+7820
+2033
+8343
+3536
+6556
+2722
+9477
+6047
+7286
+3900
+8957
+6519
+#program
+Economics
+Film Animation
+Computational Arts
+Communications
+Communications
+Computer Science
+Computational Arts
+Psychology
+Computer Science
+Software Engineering
+Economics
+Computational Arts
+Software Engineering
+Business Administration
+Economics
+Film Animation
+Political Science
+Psychology
+Physical Education
+Economics
+Political Science
+Communications
+Software Engineering
+Political Science
+Communications
+Business Administration
+Economics
+Physical Education
+Communications
+Software Engineering
+#address
+4257 Washburn Street
+4614 Main Street
+1180 Maxwell Farm Road
+4448 County Line Road
+770 Tator Patch Road
+628 Musgrave Street
+3625 Isaacs Creek Road
+876 Oakridge Farm Lane
+2664 Shinn Street
+1106 Poling Farm Road
+749 Kimberly Way
+1123 Preston Street
+6 Poplar Street
+3912 Cerullo Road
+3448 Ella Street
+902 Jadewood Farms
+2823 Point Street
+1020 Hornor Avenue
+2927 Birch Street
+2533 Virginia Street
+2606 Dye Street
+540 Olen Thomas Drive
+4400 Neuport Lane
+2809 Trails End Road
+2490 Howard Street
+2843 Everette Alley
+2002 Crestview Manor
+2852 Chandler Drive
+1381 Carter Street
+2677 Star Trek Drive
+#name
+Willa Duggan
+Rufus Worthington
+Annabel George
+Dimitri Cherry
+Hari Tang
+Hamish Osborn
+Penny House
+Mason Rivers
+Ishika Meyers
+Jazmin Allan
+Kelsie Clifford
+Carlo Cortez
+Laurie Rodgers
+Alton Sloan
+Anabel French
+Tristan Harvey
+Emerson Traynor
+Zeshan Whyte
+Abdur Guzman
+Jasmine Everett
+Arnav Couch
+Izzy Ali
+Daniele Garner
+Callam Glenn
+Conan Elliott
+Madelyn Hope
+Lubna Holcomb
+Oran Cabrera
+Magnus Patterson
+

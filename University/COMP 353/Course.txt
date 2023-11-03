@@ -1,0 +1,93 @@
+#courseID
+CART215
+ENGR213
+COMP477
+MATH251
+CART215
+COMP345
+GEOG211
+COMP477
+HIST230
+ENGR213
+ENGR213
+INDU311
+PHIL210
+GEOG211
+CART215
+COMP353
+ANIM250
+GEOG211
+MATH251
+COMP345
+COMP353
+COMP477
+PHIL210
+INDU311
+HIST230
+HIST230
+PHIL210
+INDU211
+HIST230
+HIST230
+#name
+Game Design
+Differential Equations
+Artificial Intelligence
+Linear Algebra I
+Game Design
+Advanced Programming Design in C++
+Geography of Canada
+Artificial Intelligence
+History of WWII
+Differential Equations
+Differential Equations
+Thermodynamics
+Introduction to Philosophy
+Geography of Canada
+Game Design
+Databases
+History of WWII
+Databases
+History of WWII
+Databases
+Sound Design
+Geography of Canada
+Linear Algebra I
+Advanced Programming Design in C++
+Databases
+Artificial Intelligence
+Introduction to Philosophy
+Thermodynamics
+History of WWII
+History of WWII
+#credits
+3
+3
+4
+3
+3
+4
+3
+4
+3
+3
+3
+4
+3
+3
+3
+4
+3
+4
+3
+4
+3
+3
+3
+4
+4
+4
+3
+4
+3
+3
